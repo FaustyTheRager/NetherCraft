@@ -8,10 +8,16 @@ public class ModBlocks {
 
     public static final BlockBase testBlock = new BlockBase(Material.rock);
 
+    public static final BlockBase netherDirt = new BlockBase(Material.dirt);
+
     public static void create() {
-        testBlock.setBlockName("test_block");
+        testBlock.setBlockName("test_block");                   // Creation of testBlock
         testBlock.setCreativeTab(Tabs.NETHERCRAFT);
         GameRegistry.registerBlock(testBlock, "Test Block");
+        
+        netherDirt.setBlockName("netherDirt");                  // Creation of netherDirt
+        netherDirt.setCreativeTab(Tabs.NETHERCRAFT);
+        GameRegistry.registerBlock(netherDirt, "Nether Dirt");
     }
 
 }
