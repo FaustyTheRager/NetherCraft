@@ -1,14 +1,13 @@
 [
 {
-  "modid": "examplemod",
-  "name": "Example Mod",
-  "description": "Example placeholder mod.",
+  "modid": "nethercraft",
+  "name": "NetherCraft",
+  "description": "A sweet Nether Mod",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
-  "authorList": ["ExampleDude"],
-  "credits": "The Forge and FML guys, for making this example",
+  "authorList": ["FaustyTheRager, kosakriszi"],
   "logoFile": "",
   "screenshots": [],
   "dependencies": []
