@@ -54,8 +54,9 @@ public class EntityLavaBoat extends EntityBoatBase {
         if (this.riddenByEntity != null && this.riddenByEntity instanceof EntityLivingBase) {
             this.riddenByEntity.extinguish();
             DataWatcher watcher = riddenByEntity.getDataWatcher();
-            watcher.updateObject(0, Byte.valueOf((byte) 0));
-            ((EntityLivingBase) this.riddenByEntity).addPotionEffect(new PotionEffect(Potion.fireResistance.getId(), 10, 1, true));
+            if (!getFlag(2)) {
+                watcher.updateObject(0, Byte.valueOf((byte) 0));
+            }
         }
         super.onUpdate();
         if (this.riddenByEntity == null) {

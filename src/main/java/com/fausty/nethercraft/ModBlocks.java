@@ -16,7 +16,7 @@ public class ModBlocks {
     //public static BlockSoulGlass  soulGlass;
 
     public static void create() {
-        fouliteOre = new BlockOreBase("foulite_ore", Material.rock, Block.soundTypeStone);
+        fouliteOre = new BlockOreBase("foulite_ore");
         netherDirt = new BlockBase("nether_dirt", Material.ground, Block.soundTypeGravel);
         glowWood = new BlockBase("glow_wood", Material.wood, Block.soundTypeWood);
         //soulGlass = new BlockBase("soul_glass", Material.glass, Block.soundTypeGlass);
