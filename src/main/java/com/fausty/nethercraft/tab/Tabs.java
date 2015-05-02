@@ -9,7 +9,7 @@ public class Tabs {
 
     public static final CreativeTabs NETHERCRAFT = new CreativeTabs(NetherCraft.MODID) {
         public Item getTabIconItem() {
-            return Item.getItemFromBlock(ModBlocks.testBlock);
+            return Item.getItemFromBlock(ModBlocks.fieryStone);
         }
     };
 

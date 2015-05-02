@@ -7,7 +7,6 @@ import net.minecraft.block.material.Material;
 
 public class ModBlocks {
 
-    public static BlockBase       testBlock;
     public static BlockBase       netherDirt;
     public static BlockBase       glowWood;
     public static BlockFieryStone fieryStone;
