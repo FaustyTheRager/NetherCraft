@@ -1,35 +1,43 @@
-package com.fausty.nethercraft.Entity;
+package com.fausty.nethercraft.entity;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.entity.item.EntityBoat;
+import com.fausty.nethercraft.ModItems;
+import net.minecraft.block.material.Material;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.world.World;
 
-public class entityLavaBoat extends EntityBoat
-{
-    /** true if no player in boat */
-    private boolean isBoatEmpty;
-    private double speedMultiplier;
-    private int boatPosRotationIncrements;
-    private double boatX;
-    private double boatY;
-    private double boatZ;
-    private double boatYaw;
-    private double boatPitch;
-    @SideOnly(Side.CLIENT)
-    private double velocityX;
-    @SideOnly(Side.CLIENT)
-    private double velocityY;
-    @SideOnly(Side.CLIENT)
-    private double velocityZ;
-    private static final String __OBFID = "CL_00001667";
+public class EntityLavaBoat extends EntityBoatBase {
 
-    public lavaBoat(World p_i1704_1_)
-    {
-        super(p_i1704_1_);
-        this.isBoatEmpty = true;
-        this.speedMultiplier = 0.07D;
-        this.preventEntitySpawning = true;
-        this.setSize(1.5F, 0.6F);
-        this.yOffset = this.height / 2.0F;
+    public EntityLavaBoat(World world) {
+        super(world);
     }
+
+    protected ItemStack getItem() {
+        return new ItemStack(ModItems.lavaBoat);
+    }
+
+    protected double getBreakMotion() {
+        return 0.5;
+    }
+
+    protected void breakBoat(final double motion) {
+        this.entityDropItem(this.getItem(), 0.0f);
+    }
+
+    protected double getAccelerationFactor() {
+        return 1.5;
+    }
+
+    protected double getTopSpeed() {
+        return 0.9;
+    }
+
+    protected boolean isOnWater(final AxisAlignedBB aabb) {
+        return this.worldObj.isAABBInMaterial(aabb, Material.water) || this.worldObj.isAABBInMaterial(aabb, Material.lava);
+    }
+
+    public String getTexture() {
+        return "textures/models/lavaBoat.png";
+    }
+
 }

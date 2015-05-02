@@ -1,0 +1,15 @@
+[
+{
+  "modid": "nethercraft",
+  "name": "NetherCraft",
+  "description": "A sweet Nether Mod",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["FaustyTheRager, kosakriszi"],
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
