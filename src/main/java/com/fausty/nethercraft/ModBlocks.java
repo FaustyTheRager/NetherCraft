@@ -2,6 +2,7 @@ package com.fausty.nethercraft;
 
 import com.fausty.nethercraft.block.BlockBase;
 import com.fausty.nethercraft.block.BlockFieryStone;
+import com.fausty.nethercraft.block.BlockOreBase;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 
@@ -11,9 +12,11 @@ public class ModBlocks {
     public static BlockBase       glowWood;
     public static BlockFieryStone fieryStone;
     public static BlockBase       fieryCobblestone;
+    public static BlockOreBase    fouliteOre;
     //public static BlockSoulGlass  soulGlass;
 
     public static void create() {
+        fouliteOre = new BlockOreBase("foulite_ore", Material.rock, Block.soundTypeStone);
         netherDirt = new BlockBase("nether_dirt", Material.ground, Block.soundTypeGravel);
         glowWood = new BlockBase("glow_wood", Material.wood, Block.soundTypeWood);
         //soulGlass = new BlockBase("soul_glass", Material.glass, Block.soundTypeGlass);
