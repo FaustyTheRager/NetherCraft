@@ -16,7 +16,7 @@ public class ModBlocks {
 
     public static void create() {
         netherDirt = new BlockBase("nether_dirt", Material.ground, Block.soundTypeGravel);
-        glowWood = new BlockBase("glow_wood", Material.rock, Block.soundTypeWood);
+        glowWood = new BlockBase("glow_wood", Material.wood, Block.soundTypeWood);
         //soulGlass = new BlockBase("soul_glass", Material.glass, Block.soundTypeGlass);
         fieryStone = new BlockFieryStone();
         fieryCobblestone = new BlockBase("fiery_cobblestone", Material.rock, Block.soundTypeStone);

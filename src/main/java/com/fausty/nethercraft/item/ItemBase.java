@@ -31,7 +31,7 @@ public class ItemBase extends Item {
         }
         final String name = this.getUnlocalizedName(new ItemStack(this, 1, index));
         if (name != null && name.length() > 4) {
-            return name.substring(12);
+            return name.substring(5, name.length() - 4);
         }
         return name;
     }
@@ -60,7 +60,7 @@ public class ItemBase extends Item {
     }
 
     public String getUnlocalizedName() {
-        return "nethercraft." + super.getUnlocalizedName().substring(5);
+        return super.getUnlocalizedName() + ".name";
     }
 
     public String getUnlocalizedName(ItemStack itemStack) {

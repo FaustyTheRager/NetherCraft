@@ -19,7 +19,4 @@ public class BlockBase extends Block {
         this.setStepSound(sound);
     }
 
-    public String getUnlocalizedName() {
-        return "nethercraft." + super.getUnlocalizedName().substring(5);
-    }
 }
