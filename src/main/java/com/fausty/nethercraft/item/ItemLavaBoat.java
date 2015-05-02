@@ -21,7 +21,7 @@ public class ItemLavaBoat extends ItemBase {
 
     @SuppressWarnings("unchecked")
     public ItemStack onItemRightClick(final ItemStack stack, final World world, final EntityPlayer player) {
-        final EntityLavaBoat entityboat = new EntityLavaBoat(world);
+        final EntityLavaBoat entityBoat = new EntityLavaBoat(world);
         final float f = 1.0f;
         final float f2 = player.prevRotationPitch + (player.rotationPitch - player.prevRotationPitch) * f;
         final float f3 = player.prevRotationYaw + (player.rotationYaw - player.prevRotationYaw) * f;
@@ -68,13 +68,13 @@ public class ItemLavaBoat extends ItemBase {
             if (world.getBlock(i, j, k) == Blocks.snow_layer) {
                 --j;
             }
-            entityboat.setPosition((double) (i + 0.5f), (double) (j + 1.0f), (double) (k + 0.5f));
-            entityboat.rotationYaw = ((MathHelper.floor_double(player.rotationYaw * 4.0f / 360.0f + 0.5) & 0x3) - 1) * 90;
-            if (!world.getCollidingBoundingBoxes(entityboat, entityboat.boundingBox.expand(-0.1, -0.1, -0.1)).isEmpty()) {
+            entityBoat.setPosition((double) (i + 0.5f), (double) (j + 1.0f), (double) (k + 0.5f));
+            entityBoat.rotationYaw = ((MathHelper.floor_double(player.rotationYaw * 4.0f / 360.0f + 0.5) & 0x3) - 1) * 90;
+            if (!world.getCollidingBoundingBoxes(entityBoat, entityBoat.boundingBox.expand(-0.1, -0.1, -0.1)).isEmpty()) {
                 return stack;
             }
             if (!world.isRemote) {
-                world.spawnEntityInWorld(entityboat);
+                world.spawnEntityInWorld(entityBoat);
             }
             if (!player.capabilities.isCreativeMode) {
                 --stack.stackSize;

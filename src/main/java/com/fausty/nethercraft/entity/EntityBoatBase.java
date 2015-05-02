@@ -40,8 +40,8 @@ public abstract class EntityBoatBase extends EntityBoat {
         EntityBoatBase.field_boatPitch = getField("boatPitch", "field_70281_h");
     }
 
-    private static Field getField(final String deobfName, final String srgName) {
-        Field ret = null;
+    private static Field getField(String deobfName, String srgName) {
+        Field ret;
         try {
             ret = EntityBoat.class.getDeclaredField(deobfName);
         }
@@ -92,12 +92,12 @@ public abstract class EntityBoatBase extends EntityBoat {
                 if (this.rand.nextBoolean()) {
                     final double d8 = this.posX - d4 * d6 * 0.8 + d5 * d7;
                     final double d9 = this.posZ - d5 * d6 * 0.8 - d4 * d7;
-                    this.worldObj.spawnParticle("splash", d8, this.posY - 0.125, d9, this.motionX, this.motionY, this.motionZ);
+                    this.worldObj.spawnParticle("smoke", d8, this.posY - 0.125, d9, this.motionX, this.motionY, this.motionZ);
                 }
                 else {
                     final double d8 = this.posX + d4 + d5 * d6 * 0.7;
                     final double d9 = this.posZ + d5 - d4 * d6 * 0.7;
-                    this.worldObj.spawnParticle("splash", d8, this.posY - 0.125, d9, this.motionX, this.motionY, this.motionZ);
+                    this.worldObj.spawnParticle("smoke", d8, this.posY - 0.125, d9, this.motionX, this.motionY, this.motionZ);
                 }
             }
         }
@@ -238,7 +238,7 @@ public abstract class EntityBoatBase extends EntityBoat {
         }
     }
 
-    public EntityItem func_145778_a(final Item item, final int meta, final float yOffset) {
+    public EntityItem func_145778_a(Item item, int meta, float yOffset) {
         if (item == Items.boat) {
             return this.entityDropItem(this.getItem(), yOffset);
         }
@@ -247,7 +247,7 @@ public abstract class EntityBoatBase extends EntityBoat {
 
     public abstract String getTexture();
 
-    public ItemStack getPickedResult(final MovingObjectPosition target) {
+    public ItemStack getPickedResult(MovingObjectPosition target) {
         return this.getItem();
     }
 
@@ -259,7 +259,7 @@ public abstract class EntityBoatBase extends EntityBoat {
         return 0.2;
     }
 
-    protected void breakBoat(final double motion) {
+    protected void breakBoat(double motion) {
         for (int k = 0; k < 3; ++k) {
             this.entityDropItem(new ItemStack(Blocks.planks), 0.0f);
         }
@@ -276,7 +276,7 @@ public abstract class EntityBoatBase extends EntityBoat {
         return 0.35;
     }
 
-    protected boolean isOnWater(final AxisAlignedBB aabb) {
+    protected boolean isOnWater(AxisAlignedBB aabb) {
         return this.worldObj.isAABBInMaterial(aabb, Material.water);
     }
 }

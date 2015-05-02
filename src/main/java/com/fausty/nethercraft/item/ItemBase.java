@@ -14,7 +14,7 @@ public class ItemBase extends Item {
 
     protected IIcon[] textures;
 
-    public ItemBase(final String internalName) {
+    public ItemBase(String internalName) {
         super();
         this.setUnlocalizedName(internalName);
         this.setCreativeTab(Tabs.NETHERCRAFT);
@@ -25,19 +25,19 @@ public class ItemBase extends Item {
         return null;
     }
 
-    public String getTextureName(final int index) {
+    public String getTextureName(int index) {
         if (!this.hasSubtypes && index > 0) {
             return null;
         }
         final String name = this.getUnlocalizedName(new ItemStack(this, 1, index));
         if (name != null && name.length() > 4) {
-            return name.substring(4);
+            return name.substring(12);
         }
         return name;
     }
 
     @SideOnly(Side.CLIENT)
-    public void registerIcons(final IIconRegister iconRegister) {
+    public void registerIcons(IIconRegister iconRegister) {
         int indexCount = 0;
         while (this.getTextureName(indexCount) != null) {
             if (++indexCount > 32767) {
@@ -52,7 +52,7 @@ public class ItemBase extends Item {
     }
 
     @SideOnly(Side.CLIENT)
-    public IIcon getIconFromDamage(final int meta) {
+    public IIcon getIconFromDamage(int meta) {
         if (meta < this.textures.length) {
             return this.textures[meta];
         }
@@ -63,11 +63,11 @@ public class ItemBase extends Item {
         return "nethercraft." + super.getUnlocalizedName().substring(5);
     }
 
-    public String getUnlocalizedName(final ItemStack itemStack) {
+    public String getUnlocalizedName(ItemStack itemStack) {
         return this.getUnlocalizedName();
     }
 
-    public String getItemStackDisplayName(final ItemStack itemStack) {
+    public String getItemStackDisplayName(ItemStack itemStack) {
         return StatCollector.translateToLocal(this.getUnlocalizedName(itemStack));
     }
 
