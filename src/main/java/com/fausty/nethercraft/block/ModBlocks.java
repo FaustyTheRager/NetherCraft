@@ -15,7 +15,7 @@ public class ModBlocks {
         testBlock.setCreativeTab(Tabs.NETHERCRAFT);
         GameRegistry.registerBlock(testBlock, "Test Block");
         
-        netherDirt.setBlockName("netherDirt");
+        netherDirt.setBlockName("netherDirt");                  // Creation of netherDirt
         netherDirt.setCreativeTab(Tabs.NETHERCRAFT);
         GameRegistry.registerBlock(netherDirt, "Nether Dirt");
     }
