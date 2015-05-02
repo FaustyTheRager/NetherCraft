@@ -6,6 +6,8 @@
 hs_err_pid*
 lib
 build
+run
+eclipse
 .idea
 .gradle
 *.iml
