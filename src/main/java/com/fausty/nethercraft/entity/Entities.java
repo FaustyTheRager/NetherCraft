@@ -7,7 +7,7 @@ public class Entities {
 
     public static void create() {
         EntityBoatBase.init();
-        EntityRegistry.registerModEntity(EntityBoatBase.class, "LavaBoat", 1, NetherCraft.instance, 80, 3, true);
+        EntityRegistry.registerModEntity(EntityLavaBoat.class, "LavaBoat", 1, NetherCraft.instance, 80, 3, true);
     }
 
 }

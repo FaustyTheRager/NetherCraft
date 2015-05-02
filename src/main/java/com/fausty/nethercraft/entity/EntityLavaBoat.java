@@ -40,4 +40,13 @@ public class EntityLavaBoat extends EntityBoatBase {
         return "textures/models/lavaBoat.png";
     }
 
+    public void onUpdate() {
+        this.isImmuneToFire = true;
+        this.extinguish();
+        if (this.ridingEntity != null) {
+            this.ridingEntity.extinguish();
+        }
+        super.onUpdate();
+    }
+
 }
