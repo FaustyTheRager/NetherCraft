@@ -1,9 +1,11 @@
 package com.fausty.nethercraft;
 
-import com.fausty.nethercraft.block.ModBlocks;
+import com.fausty.nethercraft.entity.Entities;
+import com.fausty.nethercraft.proxy.CommonProxy;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.Mod.EventHandler;
+import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
@@ -14,10 +16,14 @@ public class NetherCraft {
 
     @Instance(value = MODID)
     public static NetherCraft instance;
+    @SidedProxy(clientSide = "com.fausty.nethercraft.proxy.ClientProxy", serverSide = "com.fausty.nethercraft.proxy.CommonProxy")
+    public static CommonProxy proxy;
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
+        ModItems.create();
         ModBlocks.create();
+        Entities.create();
     }
 
     @EventHandler

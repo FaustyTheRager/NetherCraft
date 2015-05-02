@@ -1,7 +1,7 @@
-package com.fausty.nethercraft.creativetab;
+package com.fausty.nethercraft.tab;
 
 import com.fausty.nethercraft.NetherCraft;
-import com.fausty.nethercraft.block.ModBlocks;
+import com.fausty.nethercraft.ModBlocks;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
