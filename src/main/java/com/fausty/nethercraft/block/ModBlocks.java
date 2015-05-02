@@ -7,8 +7,7 @@ import net.minecraft.block.material.Material;
 public class ModBlocks {
 
     public static final BlockBase testBlock = new BlockBase(Material.rock);
-
-    public static final BlockBase netherDirt = new BlockBase(Material.dirt);
+    public static final BlockBase netherDirt = new BlockBase(Material.ground);
 
     public static void create() {
         testBlock.setBlockName("test_block");                   // Creation of testBlock
