@@ -3,8 +3,6 @@ package com.fausty.nethercraft.entity;
 import com.fausty.nethercraft.ModItems;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.DataWatcher;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
@@ -12,14 +10,13 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 
-import java.lang.reflect.Field;
-
 public class EntityLavaBoat extends EntityBoatBase {
 
     public EntityLavaBoat(World world) {
         super(world);
         this.isImmuneToFire = true;
     }
+
     protected ItemStack getItem() {
         return new ItemStack(ModItems.lavaBoat);
     }
@@ -56,15 +53,8 @@ public class EntityLavaBoat extends EntityBoatBase {
         this.extinguish();
         if (this.riddenByEntity != null && this.riddenByEntity instanceof EntityLivingBase) {
             this.riddenByEntity.extinguish();
-            try {
-                Field field = Entity.class.getDeclaredField("datawatcher");
-                field.setAccessible(true);
-                DataWatcher watcher = (DataWatcher) field.get(riddenByEntity);
-
-            }
-            catch (Exception e) {
-                e.printStackTrace();
-            }
+            DataWatcher watcher = riddenByEntity.getDataWatcher();
+            watcher.updateObject(0, Byte.valueOf((byte) 0));
             ((EntityLivingBase) this.riddenByEntity).addPotionEffect(new PotionEffect(Potion.fireResistance.getId(), 10, 1, true));
         }
         super.onUpdate();
