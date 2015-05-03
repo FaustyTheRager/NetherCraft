@@ -8,7 +8,10 @@ import cpw.mods.fml.common.gameevent.InputEvent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.entity.DataWatcher;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+
+import java.lang.reflect.Field;
 
 public class ClientProxy extends CommonProxy {
 
@@ -24,6 +27,14 @@ public class ClientProxy extends CommonProxy {
             if (player.ridingEntity != null && player.ridingEntity instanceof EntityLavaBoat) {
                 EntityLavaBoat boat = (EntityLavaBoat) player.ridingEntity;
                 boat.riddenByEntity = null;
+                try {
+                    Field field = Entity.class.getDeclaredField("isImmuneToFire");
+                    field.setAccessible(true);
+                    field.setBoolean(player, false);
+                }
+                catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
             watcher.updateObject(0, Byte.valueOf((byte) 0));
         }
