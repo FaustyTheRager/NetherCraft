@@ -11,6 +11,7 @@ public class BlockFieryStone extends BlockBase {
 
     public BlockFieryStone() {
         super("fiery_stone", Material.rock, Block.soundTypeStone);
+        setLightLevel(1.0F);
     }
 
     public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_) {
