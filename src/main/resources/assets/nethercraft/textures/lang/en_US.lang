@@ -2,6 +2,7 @@ itemGroup.nethercraft=NetherCraft
 
 item.lava_boat.name=Lava Boat
 item.foulite_dust.name=Foulite Dust
+item.tear_dust.name=Tear Dust
 
 tile.nether_dirt.name=Nether Dirt
 tile.fiery_stone.name=Fiery Stone
@@ -12,4 +13,4 @@ tile.foulite_ore.name=Foulite Ore
 tile.linium_ore.name=Linium Ore
 tile.neridium_ore.name=Neridium Ore
 tile.pyridium_ore.name=Pyridium Ore
-tile.w_ore.name=Mourning Ore
+tile.mourning_ore.name=Mourning Ore
