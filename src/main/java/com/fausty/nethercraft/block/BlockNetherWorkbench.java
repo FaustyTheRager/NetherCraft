@@ -8,7 +8,6 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
@@ -22,6 +21,7 @@ public class BlockNetherWorkbench extends BlockContainerBase {
     public BlockNetherWorkbench() {
         super("nether_workbench", Material.wood);
         this.setBlockTextureName("nethercraft:glow_wood");
+        this.setLightLevel(0.6F);
     }
 
     public TileEntity createNewTileEntity(World world, int metadata) {
@@ -43,4 +43,5 @@ public class BlockNetherWorkbench extends BlockContainerBase {
         this.side = iconRegister.registerIcon("nethercraft:nether_workbench_side");
         this.front = iconRegister.registerIcon("nethercraft:nether_workbench_front");
     }
+
 }
