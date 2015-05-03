@@ -17,11 +17,11 @@ public class ModBlocks {
     public static BlockOreBase    liniumOre;
     public static BlockOreBase    neridiumOre;
     public static BlockOreBase    pyridiumOre;
-    public static BlockOreBase    wOre;
+    public static BlockOreBase    mourningOre;
     //public static BlockSoulGlass  soulGlass;
 
     public static void create() {
-        wOre= new BlockOreBase("w_ore");
+        mourningOre= new BlockOreBase("mourning_ore");
         fouliteOre = new BlockOreBase("foulite_ore");
         liniumOre = new BlockOreBase("linium_ore");
         neridiumOre = new BlockOreBase("neridium_ore");

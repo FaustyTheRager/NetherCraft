@@ -7,10 +7,12 @@ public class ModItems {
 
     public static ItemLavaBoat lavaBoat;
     public static ItemBase fouliteDust;
+    public static ItemBase tearDust;
 
     public static void create() {
         lavaBoat = new ItemLavaBoat("lava_boat");
         fouliteDust = new ItemBase("foulite_dust");
+        tearDust = new ItemBase("tear_dust");
     }
 
 }
