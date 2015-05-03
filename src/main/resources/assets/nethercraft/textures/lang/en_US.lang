@@ -1,7 +1,7 @@
 itemGroup.nethercraft=NetherCraft
 
 item.lava_boat.name=Lava Boat
-item.foulite.name=Foulite
+item.foulite_dust.name=Foulite Dust
 
 tile.nether_dirt.name=Nether Dirt
 tile.fiery_stone.name=Fiery Stone

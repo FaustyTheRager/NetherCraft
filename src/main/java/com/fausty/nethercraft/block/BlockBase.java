@@ -10,6 +10,7 @@ public class BlockBase extends Block {
     public BlockBase(String internalName, Material material) {
         super(material);
         this.setBlockName(internalName);
+        this.setBlockTextureName("nethercraft:" + internalName);
         this.setCreativeTab(Tabs.NETHERCRAFT);
         GameRegistry.registerBlock(this, internalName);
     }

@@ -3,12 +3,15 @@ package com.fausty.nethercraft.entity;
 import com.fausty.nethercraft.ModItems;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.DataWatcher;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
+
+import java.lang.reflect.Field;
 
 public class EntityLavaBoat extends EntityBoatBase {
 
@@ -30,7 +33,7 @@ public class EntityLavaBoat extends EntityBoatBase {
     }
 
     protected double getAccelerationFactor() {
-        return 1.5;
+        return 1.3;
     }
 
     protected double getTopSpeed() {
@@ -54,9 +57,7 @@ public class EntityLavaBoat extends EntityBoatBase {
         if (this.riddenByEntity != null && this.riddenByEntity instanceof EntityLivingBase) {
             this.riddenByEntity.extinguish();
             DataWatcher watcher = riddenByEntity.getDataWatcher();
-            if (!getFlag(2)) {
-                watcher.updateObject(0, Byte.valueOf((byte) 0));
-            }
+            watcher.updateObject(0, Byte.valueOf((byte) 0));
         }
         super.onUpdate();
         if (this.riddenByEntity == null) {
