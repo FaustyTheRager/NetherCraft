@@ -21,11 +21,11 @@ public class ModBlocks {
     //public static BlockSoulGlass  soulGlass;
 
     public static void create() {
-        mourningOre= new BlockOreBase("mourning_ore");
-        fouliteOre = new BlockOreBase("foulite_ore");
-        liniumOre = new BlockOreBase("linium_ore");
-        neridiumOre = new BlockOreBase("neridium_ore");
-        pyridiumOre = new BlockOreBase("pyridium_ore");
+        mourningOre= new BlockOreBase("mourning_ore", 3);
+        fouliteOre = new BlockOreBase("foulite_ore", 3);
+        liniumOre = new BlockOreBase("linium_ore", 3);
+        neridiumOre = new BlockOreBase("neridium_ore", 3);
+        pyridiumOre = new BlockOreBase("pyridium_ore", 3);
         netherDirt = new BlockBase("nether_dirt", Material.ground, Block.soundTypeGravel);
         glowWood = new BlockGlowBase("glow_wood");
         //soulGlass = new BlockBase("soul_glass", Material.glass, Block.soundTypeGlass);
