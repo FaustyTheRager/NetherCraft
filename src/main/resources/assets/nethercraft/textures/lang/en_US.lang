@@ -1,5 +1,7 @@
 itemGroup.nethercraft=NetherCraft
 
+container.nether_workbench=Nether Workbench
+
 item.lava_boat.name=Lava Boat
 item.foulite_dust.name=Foulite Dust
 item.tear_dust.name=Tear Dust
@@ -14,3 +16,4 @@ tile.linium_ore.name=Linium Ore
 tile.neridium_ore.name=Neridium Ore
 tile.pyridium_ore.name=Pyridium Ore
 tile.mourning_ore.name=Mourning Ore
+tile.nether_workbench.name=Nether Workbench

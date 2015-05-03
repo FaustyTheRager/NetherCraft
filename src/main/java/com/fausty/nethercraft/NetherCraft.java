@@ -1,6 +1,6 @@
 package com.fausty.nethercraft;
 
-import com.fausty.nethercraft.entity.Entities;
+import com.fausty.nethercraft.gui.GuiHandler;
 import com.fausty.nethercraft.proxy.CommonProxy;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
@@ -9,7 +9,7 @@ import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.common.MinecraftForge;
+import cpw.mods.fml.common.network.NetworkRegistry;
 
 @Mod(modid = NetherCraft.MODID, version = NetherCraft.VERSION)
 public class NetherCraft {
@@ -25,12 +25,13 @@ public class NetherCraft {
     public void preInit(FMLPreInitializationEvent event) {
         ModItems.create();
         ModBlocks.create();
-        Entities.create();
+        ModEntities.create();
     }
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
         FMLCommonHandler.instance().bus().register(proxy);
+        NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
     }
 
 }

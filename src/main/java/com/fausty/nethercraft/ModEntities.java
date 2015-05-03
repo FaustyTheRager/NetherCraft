@@ -1,9 +1,11 @@
-package com.fausty.nethercraft.entity;
+package com.fausty.nethercraft;
 
 import com.fausty.nethercraft.NetherCraft;
+import com.fausty.nethercraft.entity.EntityBoatBase;
+import com.fausty.nethercraft.entity.EntityLavaBoat;
 import cpw.mods.fml.common.registry.EntityRegistry;
 
-public class Entities {
+public class ModEntities {
 
     public static void create() {
         EntityBoatBase.init();

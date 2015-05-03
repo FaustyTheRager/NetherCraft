@@ -1,5 +1,6 @@
-package com.fausty.nethercraft.block;
+package com.fausty.nethercraft.block.base;
 
+import com.fausty.nethercraft.block.base.BlockBase;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 

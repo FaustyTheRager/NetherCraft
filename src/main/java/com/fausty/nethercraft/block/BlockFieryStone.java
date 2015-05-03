@@ -1,6 +1,7 @@
 package com.fausty.nethercraft.block;
 
 import com.fausty.nethercraft.ModBlocks;
+import com.fausty.nethercraft.block.base.BlockBase;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;

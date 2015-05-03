@@ -51,6 +51,7 @@ public class EntityLavaBoat extends EntityBoatBase {
     }
 
     public void onUpdate() {
+        super.onUpdate();
         if (this.riddenByEntity != null && this.riddenByEntity instanceof EntityLivingBase) {
 //            try {
 //                Field field = Entity.class.getDeclaredField("isImmuneToFire");
@@ -63,8 +64,7 @@ public class EntityLavaBoat extends EntityBoatBase {
             DataWatcher watcher = riddenByEntity.getDataWatcher();
             watcher.updateObject(0, Byte.valueOf((byte) 0));
         }
-        super.onUpdate();
-        if (this.riddenByEntity == null) {
+        else {
             this.motionX = 0;
             this.motionZ = 0;
         }

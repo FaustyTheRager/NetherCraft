@@ -16,6 +16,7 @@ import java.lang.reflect.Field;
 public class ClientProxy extends CommonProxy {
 
     public ClientProxy() {
+        super();
         RenderingRegistry.registerEntityRenderingHandler(EntityLavaBoat.class, new RenderLavaBoat());
     }
 
@@ -23,20 +24,12 @@ public class ClientProxy extends CommonProxy {
     public void onKeyInput(InputEvent.KeyInputEvent event) {
         if (Minecraft.getMinecraft().gameSettings.keyBindSneak.isPressed()) {
             EntityPlayer player = getPlayerInstance();
-            DataWatcher watcher = player.getDataWatcher();
+            player.extinguish();
             if (player.ridingEntity != null && player.ridingEntity instanceof EntityLavaBoat) {
                 EntityLavaBoat boat = (EntityLavaBoat) player.ridingEntity;
                 boat.riddenByEntity = null;
-                try {
-                    Field field = Entity.class.getDeclaredField("isImmuneToFire");
-                    field.setAccessible(true);
-                    field.setBoolean(player, false);
-                }
-                catch (Exception e) {
-                    e.printStackTrace();
-                }
+                player.setPositionAndUpdate(boat.posX, boat.posY + 5, boat.posZ);
             }
-            watcher.updateObject(0, Byte.valueOf((byte) 0));
         }
     }
 

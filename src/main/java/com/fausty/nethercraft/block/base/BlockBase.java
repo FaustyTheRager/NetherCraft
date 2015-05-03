@@ -1,4 +1,4 @@
-package com.fausty.nethercraft.block;
+package com.fausty.nethercraft.block.base;
 
 import com.fausty.nethercraft.tab.Tabs;
 import cpw.mods.fml.common.registry.GameRegistry;
