@@ -12,6 +12,8 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
+import java.util.Random;
+
 public class BlockNetherWorkbench extends BlockContainerBase {
 
     private IIcon top;
@@ -42,6 +44,15 @@ public class BlockNetherWorkbench extends BlockContainerBase {
         this.top = iconRegister.registerIcon("nethercraft:nether_workbench_top");
         this.side = iconRegister.registerIcon("nethercraft:nether_workbench_side");
         this.front = iconRegister.registerIcon("nethercraft:nether_workbench_front");
+    }
+
+    @SideOnly(Side.CLIENT)
+    public void randomDisplayTick(World world, int x, int y, int z, Random random) {
+        double d = 0.5D;
+        world.spawnParticle("portal", x + d + random.nextFloat(), y + d, z + d + random.nextFloat(), 0.0, 0.0, 0.0);
+        world.spawnParticle("portal", x + d - random.nextFloat(), y + d, z + d - random.nextFloat(), 0.0, 0.0, 0.0);
+        world.spawnParticle("portal", x + d + random.nextFloat(), y + d, z + d - random.nextFloat(), 0.0, 0.0, 0.0);
+        world.spawnParticle("portal", x + d - random.nextFloat(), y + d, z + d + random.nextFloat(), 0.0, 0.0, 0.0);
     }
 
 }
