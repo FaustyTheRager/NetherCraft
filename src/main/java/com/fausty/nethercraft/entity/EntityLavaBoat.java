@@ -6,6 +6,7 @@ import net.minecraft.entity.DataWatcher;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 
@@ -53,16 +54,9 @@ public class EntityLavaBoat extends EntityBoatBase {
     public void onUpdate() {
         super.onUpdate();
         if (this.riddenByEntity != null && this.riddenByEntity instanceof EntityLivingBase) {
-//            try {
-//                Field field = Entity.class.getDeclaredField("isImmuneToFire");
-//                field.setAccessible(true);
-//                field.setBoolean(riddenByEntity, true);
-//            }
-//            catch (Exception e) {
-//            }
             this.riddenByEntity.extinguish();
-            DataWatcher watcher = riddenByEntity.getDataWatcher();
-            watcher.updateObject(0, Byte.valueOf((byte) 0));
+            ((EntityLivingBase) this.riddenByEntity).addPotionEffect(new PotionEffect(12, 100, 0, true));
+            this.riddenByEntity.getDataWatcher().updateObject(0, (byte) 0);
         }
         else {
             this.motionX = 0;

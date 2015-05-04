@@ -61,6 +61,7 @@ public abstract class EntityBoatBase extends EntityBoat {
         super(world);
     }
 
+    @SuppressWarnings("unchecked")
     public void onUpdate() {
         super.onEntityUpdate();
         if (this.getTimeSinceHit() > 0) {
@@ -75,7 +76,7 @@ public abstract class EntityBoatBase extends EntityBoat {
         final byte b0 = 5;
         double d0 = 0.0;
         for (int i = 0; i < b0; ++i) {
-            final double d = this.boundingBox.minY + (this.boundingBox.maxY - this.boundingBox.minY) * (i + 0) / b0 - 0.125;
+            final double d = this.boundingBox.minY + (this.boundingBox.maxY - this.boundingBox.minY) * i / b0 - 0.125;
             final double d2 = this.boundingBox.minY + (this.boundingBox.maxY - this.boundingBox.minY) * (i + 1) / b0 - 0.125;
             final AxisAlignedBB axisalignedbb = AxisAlignedBB.getBoundingBox(this.boundingBox.minX, d, this.boundingBox.minZ, this.boundingBox.maxX, d2, this.boundingBox.maxZ);
             if (this.isOnWater(axisalignedbb)) {
@@ -218,12 +219,11 @@ public abstract class EntityBoatBase extends EntityBoat {
                 }
                 this.setRotation(this.rotationYaw += (float) d12, this.rotationPitch);
                 if (!this.worldObj.isRemote) {
-                    final List<Entity> list = (List<Entity>) this.worldObj.getEntitiesWithinAABBExcludingEntity((Entity) this, this.boundingBox.expand(0.20000000298023224, 0.0, 0.20000000298023224));
+                    final List<Entity> list = (List<Entity>) this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.boundingBox.expand(0.20000000298023224, 0.0, 0.20000000298023224));
                     if (list != null && !list.isEmpty()) {
-                        for (int k2 = 0; k2 < list.size(); ++k2) {
-                            final Entity entity = list.get(k2);
+                        for (final Entity entity : list) {
                             if (entity != this.riddenByEntity && entity.canBePushed() && entity instanceof EntityBoat) {
-                                entity.applyEntityCollision((Entity) this);
+                                entity.applyEntityCollision(this);
                             }
                         }
                     }
