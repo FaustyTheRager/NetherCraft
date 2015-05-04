@@ -15,9 +15,8 @@ import java.util.List;
 
 public class ItemLavaBoat extends ItemBase {
 
-    public ItemLavaBoat(String internalName) {
-        super(internalName);
-    }
+    public ItemLavaBoat(String internalName) 
+    {   super(internalName);    }
 
     @SuppressWarnings("unchecked")
     public ItemStack onItemRightClick(final ItemStack stack, final World world, final EntityPlayer player) {
