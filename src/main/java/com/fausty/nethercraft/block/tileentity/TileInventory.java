@@ -8,18 +8,25 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 
-public class TileInventory extends TileEntity implements IInventory {
+public abstract class TileInventory extends TileEntity implements IInventory {
 
-    protected ItemStack[] contents;
-    protected String      inventoryName;
-    protected int         maxStackSize;
+    private ItemStack[] contents;
+    private String      inventoryName;
+    private String      customName;
+    private int         maxStackSize;
+
+    protected TileInventory(String inventoryName, int slots, int maxStackSize) {
+        this.inventoryName = inventoryName;
+        this.maxStackSize = maxStackSize;
+        this.contents = new ItemStack[slots];
+    }
 
     public int getSizeInventory() {
-        return contents.length;
+        return this.contents.length;
     }
 
     public ItemStack[] getContents() {
-        return contents;
+        return this.contents;
     }
 
     public ItemStack getStackInSlot(int slotIndex) {
@@ -27,20 +34,20 @@ public class TileInventory extends TileEntity implements IInventory {
     }
 
     public ItemStack decrStackSize(int slotIndex, int toRemove) {
-        if (contents[slotIndex] != null) {
+        if (this.contents[slotIndex] != null) {
             ItemStack itemstack;
 
-            if (contents[slotIndex].stackSize <= toRemove) {
-                itemstack = contents[slotIndex];
-                contents[slotIndex] = null;
+            if (this.contents[slotIndex].stackSize <= toRemove) {
+                itemstack = this.contents[slotIndex];
+                this.contents[slotIndex] = null;
                 this.markDirty();
                 return itemstack;
             }
             else {
-                itemstack = contents[slotIndex].splitStack(toRemove);
+                itemstack = this.contents[slotIndex].splitStack(toRemove);
 
-                if (contents[slotIndex].stackSize == 0) {
-                    contents[slotIndex] = null;
+                if (this.contents[slotIndex].stackSize == 0) {
+                    this.contents[slotIndex] = null;
                 }
 
                 this.markDirty();
@@ -53,9 +60,9 @@ public class TileInventory extends TileEntity implements IInventory {
     }
 
     public ItemStack getStackInSlotOnClosing(int slotIndex) {
-        if (contents[slotIndex] != null) {
-            ItemStack itemstack = contents[slotIndex];
-            contents[slotIndex] = null;
+        if (this.contents[slotIndex] != null) {
+            ItemStack itemstack = this.contents[slotIndex];
+            this.contents[slotIndex] = null;
             return itemstack;
         }
         else {
@@ -64,7 +71,7 @@ public class TileInventory extends TileEntity implements IInventory {
     }
 
     public void setInventorySlotContents(int slotIndex, ItemStack stack) {
-        contents[slotIndex] = stack;
+        this.contents[slotIndex] = stack;
 
         if (stack != null && stack.stackSize > this.getInventoryStackLimit()) {
             stack.stackSize = getInventoryStackLimit();
@@ -74,20 +81,28 @@ public class TileInventory extends TileEntity implements IInventory {
     }
 
     public String getInventoryName() {
-        return inventoryName;
+        return this.hasCustomInventoryName() ? this.customName : inventoryName;
+    }
+
+    public void setCustomName(String customName) {
+        this.customName = customName;
+    }
+
+    public boolean hasCustomInventoryName() {
+        return this.customName != null && this.customName.length() > 0;
     }
 
     public void readFromNBT(NBTTagCompound tags) {
         super.readFromNBT(tags);
         NBTTagList list = tags.getTagList("items", 10);
-        contents = new ItemStack[getSizeInventory()];
+        this.contents = new ItemStack[getSizeInventory()];
 
         for (int i = 0; i < list.tagCount(); ++i) {
             NBTTagCompound nbt = list.getCompoundTagAt(i);
             int j = nbt.getByte("slot");
 
-            if (j >= 0 && j < contents.length) {
-                contents[j] = ItemStack.loadItemStackFromNBT(nbt);
+            if (j >= 0 && j < this.contents.length) {
+                this.contents[j] = ItemStack.loadItemStackFromNBT(nbt);
             }
         }
     }
@@ -96,11 +111,11 @@ public class TileInventory extends TileEntity implements IInventory {
         super.writeToNBT(tags);
         NBTTagList list = new NBTTagList();
 
-        for (int i = 0; i < contents.length; ++i) {
-            if (contents[i] != null) {
+        for (int i = 0; i < this.contents.length; ++i) {
+            if (this.contents[i] != null) {
                 NBTTagCompound nbt = new NBTTagCompound();
                 nbt.setByte("slot", (byte) i);
-                contents[i].writeToNBT(nbt);
+                this.contents[i].writeToNBT(nbt);
                 list.appendTag(nbt);
             }
         }
@@ -108,12 +123,8 @@ public class TileInventory extends TileEntity implements IInventory {
         tags.setTag("items", list);
     }
 
-    public boolean hasCustomInventoryName() {
-        return false;
-    }
-
     public int getInventoryStackLimit() {
-        return maxStackSize;
+        return this.maxStackSize;
     }
 
     public boolean isUseableByPlayer(EntityPlayer player) {

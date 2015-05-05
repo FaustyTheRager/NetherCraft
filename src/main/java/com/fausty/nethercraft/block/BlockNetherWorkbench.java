@@ -10,6 +10,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
 import java.util.Random;
@@ -24,7 +25,6 @@ public class BlockNetherWorkbench extends BlockContainerBase {
         super("nether_workbench", Material.wood);
         this.setBlockTextureName("nethercraft:glow_wood");
         this.setLightLevel(0.6F);
-        this.setHardness(2.5F);
     }
 
     public TileEntity createNewTileEntity(World world, int metadata) {
@@ -49,11 +49,9 @@ public class BlockNetherWorkbench extends BlockContainerBase {
 
     @SideOnly(Side.CLIENT)
     public void randomDisplayTick(World world, int x, int y, int z, Random random) {
-        double d = 0.5D;
-        world.spawnParticle("portal", x + d + random.nextFloat(), y + d, z + d + random.nextFloat(), 0.0, 0.0, 0.0);
-        world.spawnParticle("portal", x + d - random.nextFloat(), y + d, z + d - random.nextFloat(), 0.0, 0.0, 0.0);
-        world.spawnParticle("portal", x + d + random.nextFloat(), y + d, z + d - random.nextFloat(), 0.0, 0.0, 0.0);
-        world.spawnParticle("portal", x + d - random.nextFloat(), y + d, z + d + random.nextFloat(), 0.0, 0.0, 0.0);
+        for (int i = 0; i < 2; i++) {
+            world.spawnParticle("portal", x + MathHelper.randomFloatClamp(random, -0.1F, 1.1F), y, z + MathHelper.randomFloatClamp(random, -0.1F, 1.1F), 0.0F, 0.4F, 0.0F);
+        }
     }
 
 }

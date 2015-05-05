@@ -10,7 +10,6 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
@@ -58,7 +57,7 @@ public abstract class BlockContainerBase extends BlockBase implements ITileEntit
         }
 
         if (stack.hasDisplayName()) {
-            ((TileEntityFurnace) world.getTileEntity(x, y, z)).func_145951_a(stack.getDisplayName());
+            ((TileInventory) world.getTileEntity(x, y, z)).setCustomName(stack.getDisplayName());
         }
     }
 
@@ -73,7 +72,6 @@ public abstract class BlockContainerBase extends BlockBase implements ITileEntit
             }
         }
         super.breakBlock(world, x, y, z, block, metaData);
-        world.removeTileEntity(x, y, z);
     }
 
     public boolean onBlockEventReceived(World world, int x, int y, int z, int i, int k) {

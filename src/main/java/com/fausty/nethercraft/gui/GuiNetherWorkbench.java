@@ -2,6 +2,8 @@ package com.fausty.nethercraft.gui;
 
 import com.fausty.nethercraft.block.tileentity.TileInventory;
 import com.fausty.nethercraft.container.ContainerNetherWorkbench;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -9,14 +11,17 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 import org.lwjgl.opengl.GL11;
 
+@SideOnly(Side.CLIENT)
 public class GuiNetherWorkbench extends GuiContainer {
 
     public static final int guiID = 1;
+    private static final ResourceLocation guiTexture = new ResourceLocation("textures/gui/container/crafting_table.png");
 
-    private ResourceLocation guiTexture = new ResourceLocation("textures/gui/container/crafting_table.png");
+    private TileInventory tileInventory;
 
     public GuiNetherWorkbench(InventoryPlayer inventory, TileInventory tileEntity) {
         super(new ContainerNetherWorkbench(inventory, tileEntity));
+        this.tileInventory = tileEntity;
         xSize = 176;
         ySize = 166;
     }
@@ -26,7 +31,7 @@ public class GuiNetherWorkbench extends GuiContainer {
     }
 
     protected void drawGuiContainerForegroundLayer(int i, int j) {
-        fontRendererObj.drawString(StatCollector.translateToLocal("container.nether_workbench"), 28, 6, 4210752);
+        fontRendererObj.drawString(StatCollector.translateToLocal(tileInventory.getInventoryName()), 28, 6, 4210752);
         fontRendererObj.drawString(StatCollector.translateToLocal("container.inventory"), 8, this.ySize - 96 + 2, 4210752);
     }
 
