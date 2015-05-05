@@ -24,6 +24,7 @@ public class BlockNetherWorkbench extends BlockContainerBase {
         super("nether_workbench", Material.wood);
         this.setBlockTextureName("nethercraft:glow_wood");
         this.setLightLevel(0.6F);
+        this.setHardness(2.5F);
     }
 
     public TileEntity createNewTileEntity(World world, int metadata) {
