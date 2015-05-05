@@ -11,11 +11,11 @@ import java.util.Random;
 public class BlockFieryStone extends BlockBase {
 
     public BlockFieryStone() {
-        super("fiery_stone", Material.rock, Block.soundTypeStone);
+        super("fiery_stone", Material.rock, Block.soundTypeStone, 2.0F);
         setLightLevel(1.0F);
     }
 
-    public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_) {
+    public Item getItemDropped(int i, Random random, int k) {
         return Item.getItemFromBlock(ModBlocks.fieryCobblestone);
     }
 }

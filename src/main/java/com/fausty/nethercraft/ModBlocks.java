@@ -28,12 +28,12 @@ public class ModBlocks {
         liniumOre = new BlockNetherOre("linium_ore");
         neridiumOre = new BlockNetherOre("neridium_ore");
         pyridiumOre = new BlockNetherOre("pyridium_ore");
-        netherDirt = new BlockBase("nether_dirt", Material.ground, Block.soundTypeGravel);
+        netherDirt = new BlockBase("nether_dirt", Material.ground, Block.soundTypeGravel, 0.5F);
         glowWood = new BlockGlowBase("glow_wood", Material.wood);
         glowWoodPlank = new BlockGlowBase("glow_wood_plank", Material.wood);
         //soulGlass = new BlockBase("soul_glass", Material.glass, Block.soundTypeGlass);
         fieryStone = new BlockFieryStone();
-        fieryCobblestone = new BlockBase("fiery_cobblestone", Material.rock, Block.soundTypeStone);
+        fieryCobblestone = new BlockBase("fiery_cobblestone", Material.rock, Block.soundTypeStone, 2.0F);
         netherCraftingTable = new BlockNetherWorkbench();
     }
 
