@@ -12,12 +12,17 @@ import java.util.Random;
 
 public class BlockOreBase extends BlockOre {
 
-    public BlockOreBase(String internalName, int hardness) {
+    public BlockOreBase(String internalName) {
+        this(internalName, 3.0F);
+    }
+
+    public BlockOreBase(String internalName, float hardness) {
         super();
-        this.setHardness(hardness);
         this.setBlockName(internalName);
         this.setBlockTextureName("nethercraft:" + internalName);
         this.setCreativeTab(Tabs.NETHERCRAFT);
+        this.setHardness(hardness);
+        this.setResistance(5.0F);
         GameRegistry.registerBlock(this, internalName);
     }
 
