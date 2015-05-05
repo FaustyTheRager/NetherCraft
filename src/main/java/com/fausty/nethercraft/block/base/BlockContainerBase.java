@@ -2,10 +2,8 @@ package com.fausty.nethercraft.block.base;
 
 import com.fausty.nethercraft.NetherCraft;
 import com.fausty.nethercraft.block.tileentity.TileInventory;
-import com.fausty.nethercraft.tab.Tabs;
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockContainer;
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
@@ -16,24 +14,23 @@ import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-public abstract class BlockContainerBase extends BlockContainer {
+public abstract class BlockContainerBase extends BlockBase implements ITileEntityProvider {
 
     protected BlockContainerBase(String internalName, Material material) {
-        super(material);
-        this.setBlockName(internalName);
-        this.setBlockTextureName("nethercraft:" + internalName);
-        this.setCreativeTab(Tabs.NETHERCRAFT);
-        GameRegistry.registerBlock(this, internalName);
+        super(internalName, material, 2.5F);
+        this.isBlockContainer = true;
     }
 
     public abstract int getGuiID();
 
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int a, float b, float c, float d) {
-        if(world.isRemote) return true;
+        if (world.isRemote) {
+            return true;
+        }
 
-        if(!player.isSneaking()) {
+        if (!player.isSneaking()) {
             TileEntity tileEntity = world.getTileEntity(x, y, z);
-            if(tileEntity != null && tileEntity instanceof TileInventory) {
+            if (tileEntity != null && tileEntity instanceof TileInventory) {
                 player.openGui(NetherCraft.instance, getGuiID(), world, x, y, z);
                 return true;
             }
@@ -76,6 +73,13 @@ public abstract class BlockContainerBase extends BlockContainer {
             }
         }
         super.breakBlock(world, x, y, z, block, metaData);
+        world.removeTileEntity(x, y, z);
+    }
+
+    public boolean onBlockEventReceived(World world, int x, int y, int z, int i, int k) {
+        super.onBlockEventReceived(world, x, y, z, i, k);
+        TileEntity tileentity = world.getTileEntity(x, y, z);
+        return tileentity != null && tileentity.receiveClientEvent(i, k);
     }
 
 }

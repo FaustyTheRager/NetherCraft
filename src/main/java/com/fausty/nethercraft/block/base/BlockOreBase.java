@@ -15,8 +15,7 @@ public abstract class BlockOreBase extends BlockBase {
     }
 
     protected BlockOreBase(String internalName, float hardness) {
-        super(internalName, Material.rock);
-        this.setHardness(hardness);
+        super(internalName, Material.rock, hardness);
         this.setResistance(5.0F);
     }
 

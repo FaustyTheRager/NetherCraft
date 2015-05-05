@@ -10,9 +10,8 @@ public class BlockGlowBase extends BlockBase {
     }
 
     public BlockGlowBase(String internalName, Material material, float hardness) {
-        super(internalName, material, Block.soundTypeWood);
+        super(internalName, material, Block.soundTypeWood, hardness);
         this.setLightLevel(0.6F);
-        this.setHardness(hardness);
         this.setResistance(5.0F);
     }
 

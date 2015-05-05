@@ -7,16 +7,17 @@ import net.minecraft.block.material.Material;
 
 public class BlockBase extends Block {
 
-    public BlockBase(String internalName, Material material) {
+    public BlockBase(String internalName, Material material, float hardness) {
         super(material);
         this.setBlockName(internalName);
         this.setBlockTextureName("nethercraft:" + internalName);
         this.setCreativeTab(Tabs.NETHERCRAFT);
+        this.setHardness(hardness);
         GameRegistry.registerBlock(this, internalName);
     }
 
-    public BlockBase(String internalName, Material material, SoundType sound) {
-        this(internalName, material);
+    public BlockBase(String internalName, Material material, SoundType sound, float hardness) {
+        this(internalName, material, hardness);
         this.setStepSound(sound);
     }
 
