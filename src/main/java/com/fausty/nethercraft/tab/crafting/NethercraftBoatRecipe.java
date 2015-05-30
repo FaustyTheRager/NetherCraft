@@ -12,7 +12,7 @@ public class NethercraftBoatRecipe {
 
         ItemStack glowWoodPlankStack = new ItemStack(ModBlocks.glowWoodPlank);
 
-        GameRegistry.addRecipe(new ItemStack(ModItems.lavaBoat))
+        GameRegistry.addRecipe(new ItemStack(ModItems.lavaBoat)
                 "   ",
                 "X X",
                 "XXX",
