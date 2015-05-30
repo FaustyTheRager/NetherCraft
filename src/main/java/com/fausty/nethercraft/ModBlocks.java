@@ -2,6 +2,7 @@ package com.fausty.nethercraft;
 
 import com.fausty.nethercraft.block.*;
 import com.fausty.nethercraft.block.base.BlockBase;
+import com.fausty.nethercraft.block.base.BlockGlassBase;
 import com.fausty.nethercraft.block.base.BlockGlowBase;
 import com.fausty.nethercraft.block.base.BlockOreBase;
 import net.minecraft.block.Block;
@@ -20,7 +21,7 @@ public class ModBlocks {
     public static BlockNetherOre         pyridiumOre;
     public static BlockNetherOre         mourningOre;
     public static BlockNetherWorkbench   netherCraftingTable;
-    public static BlockBase              soulGlass;
+    public static BlockGlassBase         soulGlass;
 
     public static void create() {
         mourningOre = new BlockNetherOre("mourning_ore");
@@ -31,7 +32,7 @@ public class ModBlocks {
         netherDirt = new BlockBase("nether_dirt", Material.ground, Block.soundTypeGravel, 0.5F);
         glowWood = new BlockGlowBase("glow_wood", Material.wood);
         glowWoodPlank = new BlockGlowBase("glow_wood_plank", Material.wood);
-        soulGlass = new BlockBase("soul_glass", Material.glass, Block.soundTypeGlass, 0.3F);
+        soulGlass = new BlockGlassBase("soul_glass", Material.glass, Block.soundTypeGlass, 0.3F);
         fieryStone = new BlockFieryStone();
         fieryCobblestone = new BlockBase("fiery_cobblestone", Material.rock, Block.soundTypeStone, 2.0F);
         netherCraftingTable = new BlockNetherWorkbench();
