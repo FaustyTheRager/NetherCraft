@@ -49,7 +49,7 @@ public class BlockNetherWorkbench extends BlockContainerBase {
 
     @SideOnly(Side.CLIENT)
     public void randomDisplayTick(World world, int x, int y, int z, Random random) {
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 3; i++) {
             world.spawnParticle("portal", x + MathHelper.randomFloatClamp(random, -0.1F, 1.1F), y, z + MathHelper.randomFloatClamp(random, -0.1F, 1.1F), 0.0F, 0.4F, 0.0F);
         }
     }
