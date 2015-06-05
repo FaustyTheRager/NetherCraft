@@ -32,7 +32,7 @@ public class ModBlocks {
         netherDirt = new BlockBase("nether_dirt", Material.ground, Block.soundTypeGravel, 0.5F);
         glowWood = new BlockGlowBase("glow_wood", Material.wood);
         glowWoodPlank = new BlockGlowBase("glow_wood_plank", Material.wood);
-        soulGlass = new BlockGlassBase("soul_glass", Material.glass, Block.soundTypeGlass, 0.3F);
+        soulGlass = new BlockGlassBase("soul_glass");
         fieryStone = new BlockFieryStone();
         fieryCobblestone = new BlockBase("fiery_cobblestone", Material.rock, Block.soundTypeStone, 2.0F);
         netherCraftingTable = new BlockNetherWorkbench();
